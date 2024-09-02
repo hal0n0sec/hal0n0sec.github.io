@@ -2,12 +2,17 @@ import { createContentLoader, defineConfig } from 'vitepress'
 // import{ Feed } from 'feed'
 
 // https://vitepress.dev/reference/site-config
+// @ts-ignore
+// @ts-ignore
 export default defineConfig({
   title: "takuya's blog",
   description: "Welcome to takuya's blog",
   lang: 'zh-CN',
   lastUpdated: true,
   markdown: {
+    image: {
+      lazyLoading: true
+    },
     lineNumbers: true,
   },
   head: [

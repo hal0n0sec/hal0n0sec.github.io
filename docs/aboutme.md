@@ -1,6 +1,6 @@
 # About me
 
-## Welcome to takuya’s blog!👀
+## halo, welcome to takuya’s blog! 👀
 
 🌈I’m a network engineer who’s really into security. I’ll be sharing my study notes here. Feel free to drop by and chat with me so we can learn together!
 

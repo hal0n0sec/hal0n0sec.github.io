@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "takuya's blog"
-  text: "👋 halo, knowledge 😉"
+  text: "👋 halo, knowledge"
   tagline: 光而不耀，静水深流
   image:
         src: /logo.png
@@ -28,4 +28,9 @@ features:
     details: My GitHub repository
     link: https://github.com/hal0n0sec
 ---
+<HomeUnderline />
+
+<confetti />
+
+<DataPanel />
 
