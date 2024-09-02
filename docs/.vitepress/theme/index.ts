@@ -2,7 +2,7 @@
 import DefaultTheme from 'vitepress/theme'
 import { h } from 'vue'
 // 不蒜子
-import { inBrowser } from 'vitepress'
+import { inBrowser, useData, useRoute } from 'vitepress'
 import busuanzi from 'busuanzi.pure.js'
 import view from './components/view.vue'
 
@@ -13,6 +13,9 @@ import DataPanel from "./components/DataPanel.vue"
 import confetti from "./components/confetti.vue"
 import update from './components/update.vue'
 import ArticleMetadata from './components/ArticleMetadata.vue'
+
+// 评论相关的
+import giscusTalk from 'vitepress-plugin-comment-with-giscus'
 
 // @ts-ignore
 // import comment from "../components/gitalk.vue";
@@ -41,6 +44,25 @@ export default {
         busuanzi.fetch()
       }
     }
+  },
+  setup() {
+    const {frontmatter} = useData();
+    const route = useRoute();
+
+    giscusTalk({
+      repo: 'hal0n0sec/hal0n0sec.github.io',// 仓库
+      repoId: 'R_kgDOMrUP9w',
+      category: 'Announcements', // 讨论分类
+      categoryId: 'DIC_kwDOMrUP984CiJpq', //讨论分类ID
+      mapping: 'pathname',
+      inputPosition: 'bottom',
+      lang: 'zh-CN',
+    },
+    {
+      frontmatter, route
+    },
+    true
+    );
   },
 
   

@@ -1,7 +1,8 @@
 /**
 * Colors: Solid
 * -------------------------------------------------------------------------- */
-
+@import './style/blur.css';
+@import './style/blockquote.css';
 /* 主题 */
 :root {
   --vp-c-white: #ffffff;
@@ -567,6 +568,14 @@
   --vp-carbon-ads-bg-color: var(--vp-c-bg-soft);
   --vp-carbon-ads-hover-text-color: var(--vp-c-brand-1);
   --vp-carbon-ads-hover-poweredby-color: var(--vp-c-text-1);
+}
+
+/* .vitepress/theme/style/var.css */
+h1 {
+  background: -webkit-linear-gradient(10deg, #bd34fe 5%, #e43498 15%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /**

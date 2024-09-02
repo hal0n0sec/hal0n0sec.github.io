@@ -1,59 +1,68 @@
 {
-  "hash": "59f25e6e",
+  "hash": "4e1c35e0",
   "configHash": "96350be2",
-  "lockfileHash": "5439290a",
-  "browserHash": "47c5f307",
+  "lockfileHash": "2e766dd8",
+  "browserHash": "174941c2",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "4e2a6073",
+      "fileHash": "cb50037f",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "137b593d",
+      "fileHash": "af4d020d",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../../node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "bc815d80",
+      "fileHash": "ccb52bfb",
       "needsInterop": false
     },
     "vitepress > @vueuse/integrations/useFocusTrap": {
       "src": "../../../../node_modules/@vueuse/integrations/useFocusTrap.mjs",
       "file": "vitepress___@vueuse_integrations_useFocusTrap.js",
-      "fileHash": "1170af98",
+      "fileHash": "ef4974ff",
       "needsInterop": false
     },
     "vitepress > mark.js/src/vanilla.js": {
       "src": "../../../../node_modules/mark.js/src/vanilla.js",
       "file": "vitepress___mark__js_src_vanilla__js.js",
-      "fileHash": "60d283f3",
+      "fileHash": "6f58baa5",
       "needsInterop": false
     },
     "vitepress > minisearch": {
       "src": "../../../../node_modules/minisearch/dist/es/index.js",
       "file": "vitepress___minisearch.js",
-      "fileHash": "0cadb502",
-      "needsInterop": false
-    },
-    "canvas-confetti": {
-      "src": "../../../../node_modules/canvas-confetti/dist/confetti.module.mjs",
-      "file": "canvas-confetti.js",
-      "fileHash": "d667fecb",
+      "fileHash": "5a54c9f6",
       "needsInterop": false
     },
     "busuanzi.pure.js": {
       "src": "../../../../node_modules/busuanzi.pure.js/index.js",
       "file": "busuanzi__pure__js.js",
-      "fileHash": "6f446155",
+      "fileHash": "5e2b9664",
       "needsInterop": true
+    },
+    "vitepress-plugin-comment-with-giscus": {
+      "src": "../../../../node_modules/vitepress-plugin-comment-with-giscus/lib/giscus.js",
+      "file": "vitepress-plugin-comment-with-giscus.js",
+      "fileHash": "0e8c5390",
+      "needsInterop": false
+    },
+    "canvas-confetti": {
+      "src": "../../../../node_modules/canvas-confetti/dist/confetti.module.mjs",
+      "file": "canvas-confetti.js",
+      "fileHash": "762f2f4e",
+      "needsInterop": false
     }
   },
   "chunks": {
+    "giscus-aTimukGI-AW4UKNQN": {
+      "file": "giscus-aTimukGI-AW4UKNQN.js"
+    },
     "chunk-7LUTEMNG": {
       "file": "chunk-7LUTEMNG.js"
     },
