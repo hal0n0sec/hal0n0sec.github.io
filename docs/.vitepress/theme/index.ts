@@ -1,11 +1,18 @@
 // https://vitepress.dev/guide/custom-theme
 import DefaultTheme from 'vitepress/theme'
 import { h } from 'vue'
+// 不蒜子
+import { inBrowser } from 'vitepress'
+import busuanzi from 'busuanzi.pure.js'
+import view from './components/view.vue'
+
 import type { Theme } from "vitepress"
 import './custom.css'
 import HomeUnderline from "./components/HomeUnderline.vue"
 import DataPanel from "./components/DataPanel.vue"
 import confetti from "./components/confetti.vue"
+import update from './components/update.vue'
+import ArticleMetadata from './components/ArticleMetadata.vue'
 
 // @ts-ignore
 // import comment from "../components/gitalk.vue";
@@ -14,6 +21,7 @@ export default {
   extends: DefaultTheme,
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
+      'layout-bottom': () => h(view),   // 不蒜子layout-bottom插槽
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
     })
   },
@@ -21,6 +29,19 @@ export default {
     // 注册全局组件
     app.component('HomeUnderline', HomeUnderline)
     app.component('DataPanel', DataPanel)
+    // 注册：五彩纸屑
     app.component('confetti' , confetti)
-  }
+    // 注册：标题下面添加时间
+    app.component('update', update)
+    // 注册：字数及阅读时间
+    app.component('ArticleMetadata', ArticleMetadata)
+
+    if (inBrowser) {
+      router.onAfterRouteChanged = () => {
+        busuanzi.fetch()
+      }
+    }
+  },
+
+  
 } satisfies Theme

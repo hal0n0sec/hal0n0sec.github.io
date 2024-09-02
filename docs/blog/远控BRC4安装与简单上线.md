@@ -4,6 +4,7 @@ date: 2024-08-17 12:00:00
 
 # 远控BRC4安装与简单上线
 
+
 Brute Ratel C4是一款类似于Cobalt Strike的商业红队武器框架，每年License收费为3000美元，客户需要提供企业电子邮件地址并在颁发许可证之前进行验证，首个版本Brute Ratel C4 v0.2于2021年2月9日发布，它是由Mandiant和CrowdStrike的前红队队员Chetan Nayak创建的，该工具独特之处在于它专门设计防止端点检测和响应(EDR)和防病毒(AV)软件的检测，是一款新型的红队商业对抗性攻击模拟武器。
 
 与Cobalt Strike的Beacon后门类似，Brute Ratel C4允许红队在远程终端主机上部署Badger后门程序，Badger连接回攻击者的命令和控制服务器，接收服务器端的命令执行相关的恶意行为。
@@ -101,3 +102,4 @@ rundll32 badger_x64.dll,main
 ![image.png](https://takuya-1305710862.cos.ap-shanghai.myqcloud.com/A1ways0nline/pic/20240817011006.png)
 
 更多后续使用方法再玩玩后分享。
+
