@@ -1,4 +1,5 @@
 import { createContentLoader, defineConfig } from 'vitepress'
+import { groupIconMdPlugin, groupIconVitePlugin, localIconLoader } from 'vitepress-plugin-group-icons';
 // import{ Feed } from 'feed'
 
 // https://vitepress.dev/reference/site-config
@@ -11,6 +12,7 @@ export default defineConfig({
   lastUpdated: true,
   markdown: {
     config: (md) => {
+      md.use(groupIconMdPlugin)
       md.renderer.rules.heading_close = (tokens, idx, options, env, slf) => {
           let htmlResult = slf.renderToken(tokens, idx, options);
           if (tokens[idx].tag === 'h1') htmlResult += `<ArticleMetadata />`; 
@@ -22,6 +24,19 @@ export default defineConfig({
     },
     lineNumbers: true,
   },
+// 关于代码图标的相关引入
+  vite: {
+    plugins: [
+      groupIconVitePlugin({
+        customIcon: {
+          bash: localIconLoader(import.meta.url, '../public/bash.svg'),
+          python: localIconLoader(import.meta.url, '../public/python.svg'),
+          powershell: localIconLoader(import.meta.url, '../public/powershell.svg'),
+        },
+      })
+    ],
+  },
+
   head: [
     ["link", {rel: "icon", href: "/logo.ico"}],
   ],

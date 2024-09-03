@@ -14,6 +14,9 @@ import confetti from "./components/confetti.vue"
 import update from './components/update.vue'
 import ArticleMetadata from './components/ArticleMetadata.vue'
 
+// 引入代码组图标的样式
+import 'virtual:group-icons.css'
+
 // 评论相关的
 import giscusTalk from 'vitepress-plugin-comment-with-giscus'
 

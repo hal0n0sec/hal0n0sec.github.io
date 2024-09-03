@@ -3,6 +3,8 @@
 * -------------------------------------------------------------------------- */
 @import './style/blur.css';
 @import './style/blockquote.css';
+/* 引入代码组的css文件进行美化 */
+@import './style/vp-code-group.css';
 /* 主题 */
 :root {
   --vp-c-white: #ffffff;
