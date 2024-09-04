@@ -19,6 +19,8 @@ import 'virtual:group-icons.css'
 
 // 评论相关的
 import giscusTalk from 'vitepress-plugin-comment-with-giscus'
+// 谷歌流量分析
+import googleAnalytics from 'vitepress-plugin-google-analytics'
 
 // @ts-ignore
 // import comment from "../components/gitalk.vue";
@@ -39,6 +41,10 @@ export default {
     app.component('confetti' , confetti)
     // 注册：标题下面添加时间
     app.component('update', update)
+    // 注册：谷歌流量分析
+    googleAnalytics({
+      id: 'G-6L2MCCHK4C',
+    }),
     // 注册：字数及阅读时间
     app.component('ArticleMetadata', ArticleMetadata)
 
