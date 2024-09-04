@@ -13,6 +13,7 @@
     "vitepress-plugin-comment-with-giscus": "^1.1.15",
     "vitepress-plugin-google-analytics": "^1.0.2",
     "vitepress-plugin-group-icons": "^1.1.0",
-    "vue": "^3.4.38"
+    "vue": "^3.4.38",
+    "xgplayer": "^3.0.20"
   }
 }

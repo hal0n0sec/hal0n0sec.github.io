@@ -21,6 +21,7 @@ import 'virtual:group-icons.css'
 import giscusTalk from 'vitepress-plugin-comment-with-giscus'
 // 谷歌流量分析
 import googleAnalytics from 'vitepress-plugin-google-analytics'
+import Xgplayer from './components/xgplayer.vue'
 
 // @ts-ignore
 // import comment from "../components/gitalk.vue";
@@ -39,6 +40,8 @@ export default {
     app.component('DataPanel', DataPanel)
     // 注册：五彩纸屑
     app.component('confetti' , confetti)
+    // 注册：网站支持视频文件的播放
+    app.component('xgplayer', Xgplayer)
     // 注册：标题下面添加时间
     app.component('update', update)
     // 注册：谷歌流量分析
