@@ -62,7 +62,8 @@ export default defineConfig({
             items: [
               {text: '远控BRC4安装与简单上线',link: '/blog/远控BRC4安装与简单上线'},
               {text: 'Ubuntu24.04部署LNMP',link: '/blog/Ubuntu24.04部署LNMP'},
-              {text: 'haloSanya', link:'/blog/haloSanya'},
+              {text: '🏖️ haloSanya', link:'/blog/🏖️ haloSanya'},
+              {text: '🏖️ Day2 Sanya', link:'/blog/🏖️ Day2 Sanya'}
             ]
           },
         ]
