@@ -1,0 +1,6 @@
+@import url("https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css");
+
+:root[lang] {
+    --vp-font-family-base: "LXGW WenKai";
+    --vp-font-family-mono: "LXGW WenKai Bold", monospace;
+  }

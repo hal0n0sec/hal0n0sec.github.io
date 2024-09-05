@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'customFont';
+    src: url('../../assets/LXGWWenKaiMonoScreen.ttf') format('truetype');
+    }
+    
+    :root {
+    --vp-sidebar-width: 300px;
+    --vp-font-family-base: "customFont"
+    }

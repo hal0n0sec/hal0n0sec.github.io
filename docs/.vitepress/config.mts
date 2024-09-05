@@ -58,12 +58,16 @@ export default defineConfig({
         text: 'Blog',
         collapsed: false,
         items: [
-          { text: '2024',
+          { text: '📦 技术本无罪',
             items: [
               {text: '远控BRC4安装与简单上线',link: '/blog/远控BRC4安装与简单上线'},
               {text: 'Ubuntu24.04部署LNMP',link: '/blog/Ubuntu24.04部署LNMP'},
-              {text: '🏖️ haloSanya', link:'/blog/🏖️ haloSanya'},
-              {text: '🏖️ Day2 Sanya', link:'/blog/🏖️ Day2 Sanya'}
+            ]
+          },
+          { text: '🌈 所想所感所得',
+            items: [
+              {text: '🏖️ Sanya Day1', link:'/blog/🏖️ Sanya Day1'},
+              {text: '🏖️ Sanya Day2', link:'/blog/🏖️ Sanya Day2'}
             ]
           },
         ]
