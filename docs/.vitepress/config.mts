@@ -64,7 +64,7 @@ export default defineConfig({
           {text: '「Docker」笔记【2】', link: '/blog/knowledge/「Docker」笔记【2】'},
           {text: '「Java安全」JavaWeb环境搭建与连接数据库', link: '/blog/knowledge/「Java安全」JavaWeb环境搭建与连接数据库'},
           {text: '「Java安全」Shiro反序列化漏洞笔记（一）', link: '/blog/knowledge/「Java安全」Shiro反序列化漏洞笔记（一）'},
-          {text: '「Java安全」SQL注入漏洞审计', link:'/blog/「Java安全」SQL注入漏洞审计'}
+          
         ]
       },
       { text: '🌈 所想所感所得',

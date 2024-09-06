@@ -5,6 +5,7 @@
 @import './style/blockquote.css';
 /* 引入代码组的css文件进行美化 */
 @import './style/vp-code-group.css';
+@import './custom-font.css';
 
 /* 导入 LXGW WenKai 字体 */
 /* @import url("https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css"); */
@@ -277,15 +278,45 @@
   * -------------------------------------------------------------------------- */
 
   /* 排版 */
-  :root {
-    --vp-font-family-base: 'Chinese Quotes', 'Inter var', 'Inter', ui-sans-serif,
-      system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-      'Helvetica Neue', Helvetica, Arial, 'Noto Sans', sans-serif,
-      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    --vp-font-family-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco,
-      Consolas, 'Liberation Mono', 'Courier New', monospace;
-  }
 
+/* 定义自定义字体 */
+@font-face {
+  font-family: 'LXGW WenKai';
+  src: url('../../assets/LXGWWenKaiScreen.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+:root {
+  --vp-font-family-base: 'LXGW WenKai','Chinese Quotes', 'Inter var', 'Inter', ui-sans-serif,
+    system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Helvetica, Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --vp-font-family-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco,
+    Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+/* 全局应用字体并增加粗细 */
+body {
+  font-family: var(--vp-font-family-base);
+  font-weight: 1000; /* 增加字体粗细，可以根据需要调整 */
+}
+
+/* 为确保标题也使用更粗的字体 */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 1000; /* 标题可以更粗一些 */
+}
+
+/* 可选：如果需要调整特定元素的字体粗细 */
+.vp-doc p {
+  font-weight: 550; /* 调整段落文本的粗细 */
+}
+
+/* 保持代码字体的粗细不变 */
+pre, code {
+  font-weight: normal;
+}
 
 /**
   * Shadows

@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'customFont';
-    src: url('../../assets/LXGWWenKaiMonoScreen.ttf') format('truetype');
+    src: url('../assets/LXGWWenKaiScreen.ttf') format('truetype');
     }
     
     :root {
