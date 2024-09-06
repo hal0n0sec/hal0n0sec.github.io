@@ -1,6 +1,30 @@
+/* 导入 LXGW WenKai 字体 */
 @import url("https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css");
 
-:root[lang] {
-    --vp-font-family-base: "LXGW WenKai";
-    --vp-font-family-mono: "LXGW WenKai Bold", monospace;
-  }
+/* 导入 Hack Nerd 字体 */
+@import url("https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css");
+
+:root {
+  /* 设置基础字体为 LXGW WenKai */
+  --vp-font-family-base: "LXGW WenKai", sans-serif;
+  
+  /* 设置等宽字体（用于内联代码）为 Hack Nerd */
+  --vp-font-family-mono: "Hack", monospace;
+}
+
+/* 调整正文字体粗细 */
+body {
+  font-weight: 500; /* 可以根据需要调整这个值，范围通常是 100 到 900 */
+}
+
+/* 设置代码块样式 */
+.vp-code-group .blocks, .vp-code {
+  font-family: "Hack", monospace !important;
+  font-weight: normal; /* 或者您想要的其他粗细 */
+}
+
+/* 可选：如果需要微调代码块的其他样式 */
+.vp-code-group .blocks, .vp-code {
+  font-size: 0.9em; /* 调整代码字体大小 */
+  line-height: 1.5; /* 调整行高 */
+}

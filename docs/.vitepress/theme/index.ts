@@ -7,7 +7,7 @@ import busuanzi from 'busuanzi.pure.js'
 import view from './components/view.vue'
 // 引入字体
 // import './custom-font.css'
-// import './font.css'
+import './font.css'
 import type { Theme } from "vitepress"
 import './custom.css'
 import HomeUnderline from "./components/HomeUnderline.vue"
