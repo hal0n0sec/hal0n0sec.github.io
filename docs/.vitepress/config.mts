@@ -55,23 +55,33 @@ export default defineConfig({
     sidebar: [
       { text: 'AboutMe', link: '/aboutme'},
       {
-        text: 'Blog',
+        text: '📦 技术本无罪',
         collapsed: false,
         items: [
-          { text: '📦 技术本无罪',
-            items: [
-              {text: '远控BRC4安装与简单上线',link: '/blog/远控BRC4安装与简单上线'},
-              {text: 'Ubuntu24.04部署LNMP',link: '/blog/Ubuntu24.04部署LNMP'},
-            ]
-          },
-          { text: '🌈 所想所感所得',
-            items: [
-              {text: '🏖️ Sanya Day1', link:'/blog/🏖️ Sanya Day1'},
-              {text: '🏖️ Sanya Day2', link:'/blog/🏖️ Sanya Day2'}
-            ]
-          },
+          {text: '「远控」BRC4安装与简单上线',link: '/blog/knowledge/「远控」BRC4安装与简单上线'},
+          {text: '「中间件」 Nginx安装与基本配置',link: '/blog/knowledge/「中间件」 Nginx安装与基本配置'},
+          {text: '「Docker」笔记【1】', link: '/blog/knowledge/「Docker」笔记【1】'},
+          {text: '「Docker」笔记【2】', link: '/blog/knowledge/「Docker」笔记【2】'},
+          {text: '「Java安全」JavaWeb环境搭建与连接数据库', link: '/blog/knowledge/「Java安全」JavaWeb环境搭建与连接数据库'},
+          {text: '「Java安全」Shiro反序列化漏洞笔记（一）', link: '/blog/knowledge/「Java安全」Shiro反序列化漏洞笔记（一）'},
+          {text: '「Java安全」SQL注入漏洞审计', link:'/blog/「Java安全」SQL注入漏洞审计'}
+        ]
+      },
+      { text: '🌈 所想所感所得',
+        collapsed: false,
+        items: [
+          {text: '「旅行」🏖️ Sanya Day1', link:'/blog/diary/「旅行」🏖️ Sanya Day1'},
+          {text: '「旅行」🏖️ Sanya Day2', link:'/blog/diary/「旅行」🏖️ Sanya Day2'}
+        ]
+      },
+      { text: '🔍 软件工具',
+        collapsed: false,
+        items: [
+          {text: '「终端shell」Oh My Zsh终端美化', link: '/blog/software/「终端shell」Oh My Zsh终端美化'},
         ]
       }
+        
+      
     ],
 
     // 文章地步导航栏的自定义配置，默认是英语
