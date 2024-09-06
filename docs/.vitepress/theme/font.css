@@ -1,13 +1,7 @@
-/* 导入 LXGW WenKai 字体 */
-@import url("https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css");
-
 /* 导入 Hack Nerd 字体 */
 @import url("https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css");
 
 :root {
-  /* 设置基础字体为 LXGW WenKai */
-  --vp-font-family-base: "LXGW WenKai", sans-serif;
-  
   /* 设置等宽字体（用于内联代码）为 Hack Nerd */
   --vp-font-family-mono: "Hack", monospace;
 }
