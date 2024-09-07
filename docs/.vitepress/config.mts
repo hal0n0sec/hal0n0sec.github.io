@@ -67,14 +67,15 @@ export default defineConfig({
           
         ]
       },
-      { text: '🌈 所想所感所得',
+      { text: '🌈 生活本无味',
         collapsed: false,
         items: [
           {text: '「旅行」🏖️ Sanya Day1', link:'/blog/diary/「旅行」🏖️ Sanya Day1'},
-          {text: '「旅行」🏖️ Sanya Day2', link:'/blog/diary/「旅行」🏖️ Sanya Day2'}
+          {text: '「旅行」🏖️ Sanya Day2', link:'/blog/diary/「旅行」🏖️ Sanya Day2'},
+          {text: '「旅行」💨 Sanya Day3&4', link:'/blog/diary/「旅行」💨 Sanya Day3&4'},
         ]
       },
-      { text: '🔍 软件工具',
+      { text: '🔍 利器本有道',
         collapsed: false,
         items: [
           {text: '「终端shell」Oh My Zsh终端美化', link: '/blog/software/「终端shell」Oh My Zsh终端美化'},
