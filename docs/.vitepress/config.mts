@@ -76,7 +76,7 @@ export default defineConfig({
       { text: '🌈 生活本无味',
         collapsed: false,
         items: [
-          {text: '「杂谈」 🍵鸡汤或是毒药', link:'/blog/diary/「杂谈」 🍵鸡汤或是毒药'},
+          {text: '「杂谈」 🍵 你我皆凡人', link:'/blog/diary/「杂谈」 🍵 你我皆凡人'},
           {text: '「旅行」🏖️ Sanya Day1', link:'/blog/diary/「旅行」🏖️ Sanya Day1'},
           {text: '「旅行」🏖️ Sanya Day2', link:'/blog/diary/「旅行」🏖️ Sanya Day2'},
           {text: '「旅行」💨 Sanya Day3&4', link:'/blog/diary/「旅行」💨 Sanya Day3&4'},

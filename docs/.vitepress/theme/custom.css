@@ -5,7 +5,7 @@
 @import './style/blockquote.css';
 /* 引入代码组的css文件进行美化 */
 @import './style/vp-code-group.css';
-@import './custom-font.css';
+/* @import './custom-font.css'; */
 
 /* 导入 LXGW WenKai 字体 */
 /* @import url("https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css"); */
@@ -282,7 +282,7 @@
 /* 定义自定义字体 */
 @font-face {
   font-family: 'LXGW WenKai';
-  src: url('../../assets/LXGWWenKaiGBScreen.ttf') format('truetype');
+  src: url('../../assets/LXGWWenKai-Bold.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -306,16 +306,6 @@ body {
 /* 为确保标题也使用更粗的字体 */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 1000; /* 标题可以更粗一些 */
-}
-
-/* 可选：如果需要调整特定元素的字体粗细 */
-.vp-doc p {
-  font-weight: 550; /* 调整段落文本的粗细 */
-}
-
-/* 保持代码字体的粗细不变 */
-pre, code {
-  font-weight: normal;
 }
 
 /**
