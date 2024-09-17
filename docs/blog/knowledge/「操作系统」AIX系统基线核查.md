@@ -496,4 +496,133 @@ date: 2024-09-17 00:14:00
     env x='() { :;}; echo vulnerable' bash -c "echo this is a test"
     ```
 
+
+基于以上对AIX系统的基线核查命令，可以编写一个自动化执行的核查脚本，脚本内容：
+
+```bash
+#!/bin/bash
+
+# 定义日志文件路径
+log_file=/tmp/aix_baseline_$(hostname)_$(date +%Y%m%d).log
+exception_file=/tmp/aix_baseline_exceptions_$(hostname)_$(date +%Y%m%d).log
+
+# 记录基本系统信息
+echo '---------------------基本系统信息---------------------' | tee -a $log_file $exception_file
+date | tee -a $log_file
+hostname | tee -a $log_file
+oslevel -r | tee -a $log_file
+
+# 检查网络配置
+echo '---------------------网络配置---------------------' | tee -a $log_file $exception_file
+ifconfig -a | tee -a $log_file
+netstat -an | egrep "LISTEN|UDP" | tee -a $log_file
+netstat -anr | tee -a $log_file
+ndd=$(netstat -an | grep LISTEN | grep -vE "127.0.0.1|::1" | wc -l)
+if [[ $ndd -gt 0]]; then
+  echo "【异常】存在 $ndd 个监听外网的高危端口" | tee -a $log_file $exception_file
+fi
+
+# 检查用户和组信息
+echo '---------------------用户和组---------------------' | tee -a $log_file $exception_file
+cat /etc/passwd | tee -a $log_file
+cat /etc/group | tee -a $log_file
+cat /etc/security/passwd | tee -a $log_file
+cat /etc/security/user | tee -a $log_file
+lsuser -a SYSTEM default | tee -a $log_file
+lsgroup -a ALL | tee -a $log_file
+id0=$(cat /etc/passwd | awk -F: '($3==0) && ($1!="root")' | wc -l)
+if [[ $id0 -gt 0]]; then
+  echo "【异常】存在 $id0 个UID为0的非root用户" | tee -a $log_file $exception_file
+fi
+
+# 检查认证和授权的相关配置
+echo '---------------------认证和授权---------------------' | tee -a $log_file $exception_file
+cat /etc/security/login.cfg | tee -a $log_file
+cat /etc/security/limits | tee -a $log_file
+lsuser -a ttys rlogin telnet root | tee -a $log_file
+if lsuser -a rlogin=true root; then
+  echo "【异常】root用户允许rlogin登录" | tee -a $log_file $exception_file
+fi
+if lsuser -a telnet=true root; then
+  echo "【异常】root用户允许telnet登录" | tee -a $log_file $exception_file
+fi
+
+# 检查文件系统和目录权限
+echo '---------------------文件系统和目录权限检查---------------------' | tee -a $log_file $exception_file
+ls -ld / | tee -a $log_file
+ls -ld /tmp | tee -a $log_file
+ls -la /etc | tee -a $log_file
+if [[ $(stat -c %a /) -gt 755 ]]; then
+  echo "【异常】 /目录权限过大" | tee -a $log_file $exception_file
+fi
+if [[ $(stat -c %a /tmp ) -gt 777 ]]; then
+  ehco "【异常】/tmp目录权限过大" | tee -a $log_file $exception_file
+fi
+
+# 检查日志和审计配置
+echo '---------------------日志和审计配置检查---------------------' | tee -a $log_file $exception_file
+cat /etc/syslog.conf | tee -a $log_file
+cat /etc/security/audit/config | tee -a $log_file
+cat /etc/security/audit/events | tee -a $log_file
+cat /etc/security/audit/objects | tee -a $log_file
+audit query | tee -a $log_file
+if ! egrep -q "^start" /etc/security/audit/config; then
+  echo "【异常】系统审计未开启" | tee -a $log_file $exception_file
+fi
+
+# 检查网络服务和端口
+echo '---------------------网络和服务端口检查---------------------' | tee -a $log_file $exception_file
+lssrc -a | tee -a $log_file
+lsof -i -n -P | tee -a $log_file
+rpcinfo -p | tee -a $log_file
+
+# 检查SSH配置
+echo '---------------------检查SSH配置---------------------' | tee -a $log_file $exception_file
+cat /etc/ssh/sshd_config | tee -a $log_file
+cat /etc/ssh/ssh_config | tee -a $log_file
+ps -elf | grep sshd | grep -v grep | tee -a $log_file
+ssh_ver=$(ssh -V 2>&1 | awk '{print $1}')
+if [[ $ssh_ver < '7.5' ]]; then
+  echo '【异常】SSH版本低于7.5，存在安全风险' | tee -a $log_file $exception_file
+fi
+
+# 检查软件安装以及版本信息
+echo '---------------------软件安装和版本信息---------------------' | tee -a $log_file $exception_file
+lslpp -L all | tee -a $log_file
+rpm -qa | tee -a $log_file
+instfix -i | grep ML | tee -a $log_file
+bash_ver=$(bash --version | head -1 | awk '{print $4}')
+if echo "$bash_ver" | grep -q "^3"; then
+  echo "【异常】Bash版本为3.x，可能存在ShellShock漏洞" | tee -a $log_file $exception_file
+fi
+if bash -c 'x() { :;}; echo vulnerable' 2>/dev/null; then
+  echo "【异常】Bash存在Shellshock漏洞" | tee -a $log_file $exception_file
+fi
+
+# 检查环境变量配置
+echo '---------------------环境变量配置---------------------' | tee -a $log_file $exception_file
+cat /etc/environment | tee -a $log_file
+cat /etc/profile | tee -a $log_file
+cat /etc/security/.profile | tee -a $log_file
+
+# 检查定时任务配置
+echo '---------------------定时任务配置---------------------' | tee -a $log_file $exception_file
+crontab -l | tee -a $log_file
+lscrontab | xargs -I {} sh -c "echo {}; crontab -l -u {}" | tee -a $log_file
+lsitab -a | tee -a $log_file
+
+# 检查其他配置项
+echo '---------------------其他配置项---------------------' | tee -a $log_file $exception_file
+vmo -a | tee -a $log_file
+lsattr -El sys0 -a maxuproc | tee -a $log_file
+lsps -a | tee -a $log_file
+lsvg | tee -a $log_file
+lspv | tee -a $log_file
+lsvg -o | xargs lsvg -p | tee -a $log_file
+lsvg -o | xargs lsvg -l | tee -a $log_file
+df -gt | tee -a $log_file
+
+echo "AIX系统基线核查已完成，请查看${log_file}了解详情，异常信息已经记录到${exception_file}" | tee -a $log_file
+```
+
     
