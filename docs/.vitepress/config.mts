@@ -79,6 +79,7 @@ export default defineConfig({
         collapsed: false,
         items: [
           {text: '「感悟」 🍵 你我皆凡人', link:'/blog/diary/「感悟」 🍵 你我皆凡人'},
+          {text: '「感悟」🍩 人生怎样才有福报', link: '/blog/diary/「感悟」🍩 人生怎样才有福报'}
           {text: '「旅行」🏖️ Sanya Day1', link:'/blog/diary/「旅行」🏖️ Sanya Day1'},
           {text: '「旅行」🏖️ Sanya Day2', link:'/blog/diary/「旅行」🏖️ Sanya Day2'},
           {text: '「旅行」💨 Sanya Day3&4', link:'/blog/diary/「旅行」💨 Sanya Day3&4'},
