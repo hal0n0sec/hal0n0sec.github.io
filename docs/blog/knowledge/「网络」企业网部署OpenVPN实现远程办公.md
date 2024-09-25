@@ -109,5 +109,103 @@ client-cert-not-required
 username-as-common-name
 plugin /usr/lib/openvpn/openvpn-plugin-auth-pam.so login
 ```
+## 0x05 配置系统以允许IP转发
+
+在系统终端输入：
+```bash
+echo "net.ipv4.ip_forward=1" | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
+```
+
+## 0x06 配置系统服务器策略
+
+在系统终端输入以下命令：
+```bash
+sudo iptables -t nat -A POSTROUTING -s 10.6.0.0/24 -o eth0 -j MASQUERADE
+sudo iptables -A INPUT -p udp --dport 9999 -j ACCEPT
+sudo iptables -A INPUT -i tun0 -j ACCEPT
+sudo iptables -A FORWARD -i tun0 -o eth0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i eth0 -o tun0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+```
+
+保存防火墙策略：
+```bash
+sudo apt install iptables-persistent -y
+sudo netfilter-persistent save
+```
+
+## 0x07 设置用户认证
+
+1. 修改配置文件
+```bash
+sudo vim /etc/pam.d/openvpn
+
+# 添加以下行
+auth required pam_unix.so
+```
+
+2. 创建系统用户账户
+```bash
+sudo adduser xiaoming
+sudo adduser xiaozhang
+sudo adduser xiaowang
+```
+
+## 0x08 生成客户端配置
+
+1. 创建基础客户端配置
+```bash
+cat > ~/client-base.conf <<EOF
+client
+dev tun
+proto udp
+remote takuya.example.com 9999
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+remote-cert-tis server
+cipher AES-256-GCM
+auth SHA256
+key-direction 1
+verb 3
+auth-user-pass
+EOF
+```
+
+2. 编写一个脚本，为每个用户生成证书和配置
+```bash
+for USER in xiaoming xiaozhang xiaowang; do
+# 生成客户端证书和密钥
+  cd ~/easy-rsa
+  ./easyrsa gen-req $USER nopass
+  ./easyrsa sign-req client $USER
+
+  # 创建用户配置文件
+  mkdir -p ~/client-configs
+  cp ~/client-base.conf ~/client-configs/$USER.ovpn
+  echo "<ca>" >> ~/client-configs/$USER.ovpn
+  cat ~/easy-rsa/pki/ca.crt >> ~/client-configs/$USER.ovpn
+  echo "</ca>" >> ~/client-configs/$USER.ovpn
+  echo "<cert>" >> ~/client-configs/$USER.ovpn
+  cat ~/easy-rsa/pki/issued/$USER.crt >> ~/client-configs/$USER.ovpn
+  echo "</cert>" >> ~/client-configs/$USER.ovpn
+  echo "<key>" >> ~/client-configs/$USER.ovpn
+  cat ~/easy-rsa/pki/private/$USER.key >> ~/client-configs/$USER.ovpn
+  echo "</key>" >> ~/client-configs/$USER.ovpn
+  echo "<tls-auth>" >> ~/client-configs/$USER.ovpn
+  cat ~/easy-rsa/takuya.key >> ~/client-configs/$USER.ovpn
+  echo "</tls-auth>" >> ~/client-configs/$USER.ovpn
+done
+```
+
+## 0x09 启动OpenVPN服务
+
+在终端输入以下命令：
+```bash
+sudo systemctl start openvpn@server
+sudo systemctl enable openvpn@server
+```
+
 
 

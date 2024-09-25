@@ -65,7 +65,8 @@ export default defineConfig({
           {text: '「Java安全」JavaWeb环境搭建与连接数据库', link: '/blog/knowledge/「Java安全」JavaWeb环境搭建与连接数据库'},
           {text: '「Java安全」Shiro反序列化漏洞笔记（一）', link: '/blog/knowledge/「Java安全」Shiro反序列化漏洞笔记（一）'},
           {text: '「操作系统」AIX系统基线核查', link: '/blog/knowledge/「操作系统」AIX系统基线核查'},
-          {text: '「Script」livp转png脚本', link: '/blog/knowledge/「Script」livp转png脚本'}
+          {text: '「Script」livp转png脚本', link: '/blog/knowledge/「Script」livp转png脚本'},
+          {text: '「网络」企业网部署OpenVPN实现远程办公', link: '/blog/knowledge/「网络」企业网部署OpenVPN实现远程办公'}
           
         ]
       },
