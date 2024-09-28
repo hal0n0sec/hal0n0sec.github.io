@@ -109,7 +109,11 @@ CSRF漏洞一般情况下可以分为 **站内** 和 **站外** 两种类型。
 
 除了手动检测的方式之外，还有一些工具可以是专门针对CSRF漏洞的，例如：CSRFTester，CSRF Request Builder，[Bolt](https://github.com/s0md3v/Bolt)等。
 
-练习：Espcms存在CSRF漏洞，[利用的参考文章](https://blog.csdn.net/m0_63127854/article/details/131619867)
+练习：
+
+1. Espcms存在CSRF漏洞，[利用的参考文章](https://blog.csdn.net/m0_63127854/article/details/131619867)；
+2. metinfo cms存在CSRF漏洞，[漏洞版本MetInfo下载链接，提取码：pek6](https://pan.baidu.com/s/1ZgKx3BE3hmJkflJxundYSA)
+3. 骑士CMS存在CSRF漏洞，[漏洞版本为4.1.24，下载链接提取码：75sx](https://pan.baidu.com/s/1U-I28J2DDTZkY1esQr9H4A)，[参考文章链接地址](https://www.cnblogs.com/wwcdg/p/15913892.html)
 
 [参考文章：先知社区-浅谈CSRF漏洞](https://xz.aliyun.com/t/7450?time__1311=n4%2BxnD0Dy7GQDtAKx05%2BbW%3DIxmTuwBx7KQx)
 

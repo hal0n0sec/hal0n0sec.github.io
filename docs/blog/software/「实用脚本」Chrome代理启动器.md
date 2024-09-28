@@ -4,8 +4,7 @@ date: 2024-09-28 01:00:00
 
 # 「实用脚本」Chrome代理启动器
 
-![GIF_chromeproxy](../../public/GIF_chromeproxy.gif)
-
+![GIF_chromeproxy.gif](../../public/GIF_chromeproxy.gif)
 
 平时在我们渗透测试过程中都需要使用到 burpsuite，我们可能只想要特定的流量经过burp的代理，而有一部分的流量并不需要经过burp代理，之前的处理方式是打开两个不同的浏览器（例如 firefox），一个用来正常的访问web站点，一个浏览器用来针对测试站点来使用burp抓取数据包。
 
