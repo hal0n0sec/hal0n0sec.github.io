@@ -73,8 +73,8 @@ export default defineConfig({
         collapsed: false,
         items: [
           {text: '「终端shell」Oh My Zsh终端美化', link: '/blog/software/「终端shell」Oh My Zsh终端美化'},
-          {text: '「网络」企业网部署OpenVPN实现远程办公', link: '/blog/knowledge/「网络」企业网部署OpenVPN实现远程办公'},
-          {text: '「实用脚本」Chrome代理启动器', link: '/blog/knowledge/「实用脚本」Chrome代理启动器'}
+          {text: '「网络」企业网部署OpenVPN实现远程办公', link: '/blog/software/「网络」企业网部署OpenVPN实现远程办公'},
+          {text: '「实用脚本」Chrome代理启动器', link: '/blog/software/「实用脚本」Chrome代理启动器'}
         ]
       },
       { text: '🌈 生活本无味',

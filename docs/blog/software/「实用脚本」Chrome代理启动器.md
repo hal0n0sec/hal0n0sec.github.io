@@ -4,6 +4,9 @@ date: 2024-09-28 01:00:00
 
 # 「实用脚本」Chrome代理启动器
 
+![GIF_chromeproxy](../../public/GIF_chromeproxy.gif)
+
+
 平时在我们渗透测试过程中都需要使用到 burpsuite，我们可能只想要特定的流量经过burp的代理，而有一部分的流量并不需要经过burp代理，之前的处理方式是打开两个不同的浏览器（例如 firefox），一个用来正常的访问web站点，一个浏览器用来针对测试站点来使用burp抓取数据包。
 
 现在可以经过以下这个脚本，运行之后可以单独的运行一个经过了代理的chrome浏览器实例，而这个Chrome实例是完全独立的，与未进过代理的Chrome进程之间相互独立，因此就无需运行其他浏览器，工作中变得更加高效。
@@ -116,5 +119,15 @@ if __name__ == "__main__":
     
     proxy_port = sys.argv[1]
     launch_chrome_with_proxy(proxy_port)
+```
+
+然后在环境变量配置文件中添加`alias`，具体如下：
+```bash
+alias chromeproxy="python3 /path/to/chromeproxy_for_macos.py 8080"
+```
+
+重新加载环境变量文件
+```bash
+source .zshrc
 ```
 
