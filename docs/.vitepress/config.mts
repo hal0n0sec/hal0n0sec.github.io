@@ -65,8 +65,7 @@ export default defineConfig({
           {text: '「Java安全」JavaWeb环境搭建与连接数据库', link: '/blog/knowledge/「Java安全」JavaWeb环境搭建与连接数据库'},
           {text: '「Java安全」Shiro反序列化漏洞笔记（一）', link: '/blog/knowledge/「Java安全」Shiro反序列化漏洞笔记（一）'},
           {text: '「操作系统」AIX系统基线核查', link: '/blog/knowledge/「操作系统」AIX系统基线核查'},
-          {text: '「Script」livp转png脚本', link: '/blog/knowledge/「Script」livp转png脚本'},
-          {text: '「应用协议」什么是DNS泄露', link: '/blog/knowledge/「应用协议」什么是DNS泄露'}
+          {text: '「应用协议」什么是DNS泄露', link: '/blog/knowledge/「应用协议」什么是DNS泄露'},
           
         ]
       },
@@ -75,7 +74,8 @@ export default defineConfig({
         items: [
           {text: '「终端shell」Oh My Zsh终端美化', link: '/blog/software/「终端shell」Oh My Zsh终端美化'},
           {text: '「网络」企业网部署OpenVPN实现远程办公', link: '/blog/software/「网络」企业网部署OpenVPN实现远程办公'},
-          {text: '「实用脚本」Chrome代理启动器', link: '/blog/software/「实用脚本」Chrome代理启动器'}
+          {text: '「实用脚本」Chrome代理启动器', link: '/blog/software/「实用脚本」Chrome代理启动器'},
+          {text: '「实用脚本」livp转png脚本', link: '/blog/software/「实用脚本」livp转png脚本'},
         ]
       },
       { text: '🌈 生活本无味',
