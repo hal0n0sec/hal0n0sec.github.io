@@ -8,6 +8,8 @@ date: 2024-09-29 12:00:00
 
 首先让我们回顾一下计算机网络中的TCP/IP五次那个结构模型
 
+
+
 ### 系统代理
 
 启用系统代理之后，遵循系统代理规则的软件就会将访问网络的请求交给 clash。
@@ -186,7 +188,7 @@ fallback-filter:
 
 ⚠️ 但是上面提到的解决方法只是解决了IP污染的问题，实际上DNS泄漏的问题并没有完全解决，因为 `fallback` 和 `nameserver` 是并发的请求，假设此时请求的域名的IP是国外的，实际上这个DNS请求还是被发送给了 `nameserver`中配置的国内的DNS服务商，只是最后实际使用了 `fallback` 中返回的结果罢了。
 
-那么解决方法就是在 `fallback` 中加上 `geosite`，`geosite` 列表的内容将被视作为已经污染了，匹配到 `geosite`的域名，将只使用 `fallback` 来进行解析，并不会使用 `nameserver` 去进行解析，这样就可以避免在 GFW 外的域名向 `nameserver` 中的国内的DNS服务器发起DNS解析的请求，从而避免了DNS泄漏。
+那么解决方法就是在 `fallback` 中加上 `geosite`，`geosite` 列表的内容将被视作为已经污染了，匹配到 `geosite`的域名，将只使用 `fallback` 来进行解析，并不会使用 `nameserver` 去进行解析，这样就可以避免在 GFW 外的域名（也就是禁止我们访问的一些国外的站点）向 `nameserver` 中的国内的DNS服务器发起DNS解析的请求，从而避免了DNS泄漏。
 
 ```text
 fallback-filter:
@@ -201,3 +203,26 @@ fallback-filter:
   	- '+.youtube.com'
 ```
 
+#### `nameserver-policy`和`fallback-filter`
+
+配置了 `geosite: - gfw`之后，会在 clash 中看到 `使用nameserver-policy 代替 geosite（geosite将在未来移除）`诸如此类的提示消息。
+
+目前更多的是使用 `nameserver-policy` 来代替 `fallback` 的功能；
+
+`fallback` 的功能之前已经讲过，如果没有配置 `geosite` ，会同时并发请求 `fallback` 和 `nameserver`，然后根据 `geoip` 数据库判断是否为国内的 IP，以此判断是采用 `fallback` 还是 `nameserver` 的结果，配置了 `geosite` 的话，如果遇到 GFW 外的域名时，就只会请求 `fallback`，不会使用 `nameserver`。
+
+而 `nameserver-policy` 的功能会更加的强大一些，`nameserver-policy` 加入了命中时需要交给哪个 DNS 服务器解析的逻辑，也可以延伸出更多更个性化的DNS分流，不会像 `fallback-filter` 一样，只能区分是否要用 `fallback` 解析。下面是一个比较简单的配置示例：
+
+```text
+dns:
+	nameserver:
+	- tls://8.8.4.4
+	- tls://1.1.1.1
+	nameserver-policy:
+		+.youtube.com: tls://dns.jerryw.cn
+		geosite:cn:
+		- 223.5.5.5
+		- 114.114.114.114
+```
+
+通过上面的示例可以看到，`nameserver-policy`可以直接指定域名查询的解析服务器，优先于 `nameserver/fallback`的查询，也可以使用 `geosite`，例子中实现的就是访问 youtube 的域名时，使用的是 `tls://dns.jerryw.cn`z 这个DNS服务器，访问国内的站点时使用的是 223.5.5.5 和 114.114.114.114 这两个国内DNS来解析的，而剩下的没有匹配到的国外的站点则交给 `nameserver` 中配置的2个国外的DNS服务器来进行解析。
