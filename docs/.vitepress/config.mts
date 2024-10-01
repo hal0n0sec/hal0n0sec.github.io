@@ -62,6 +62,7 @@ export default defineConfig({
           {text: '「中间件」 Nginx安装与基本配置',link: '/blog/knowledge/「中间件」 Nginx安装与基本配置'},
           {text: '「Docker」笔记【1】', link: '/blog/knowledge/「Docker」笔记【1】'},
           {text: '「Docker」笔记【2】', link: '/blog/knowledge/「Docker」笔记【2】'},
+          {text: '「Docker」代理配置', link: '/blog/knowledge/「Docker」代理配置'},
           {text: '「Java安全」JavaWeb环境搭建与连接数据库', link: '/blog/knowledge/「Java安全」JavaWeb环境搭建与连接数据库'},
           {text: '「Java安全」Shiro反序列化漏洞笔记（一）', link: '/blog/knowledge/「Java安全」Shiro反序列化漏洞笔记（一）'},
           {text: '「操作系统」AIX系统基线核查', link: '/blog/knowledge/「操作系统」AIX系统基线核查'},
