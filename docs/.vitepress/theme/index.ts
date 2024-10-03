@@ -25,6 +25,7 @@ import giscusTalk from 'vitepress-plugin-comment-with-giscus'
 import googleAnalytics from 'vitepress-plugin-google-analytics'
 import Xgplayer from './components/xgplayer.vue'
 
+
 // @ts-ignore
 // import comment from "../components/gitalk.vue";
 
@@ -52,6 +53,7 @@ export default {
     }),
     // 注册：字数及阅读时间
     app.component('ArticleMetadata', ArticleMetadata)
+
 
     if (inBrowser) {
       router.onAfterRouteChanged = () => {
