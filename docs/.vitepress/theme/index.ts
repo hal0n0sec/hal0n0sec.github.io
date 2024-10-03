@@ -24,6 +24,7 @@ import giscusTalk from 'vitepress-plugin-comment-with-giscus'
 // 谷歌流量分析
 import googleAnalytics from 'vitepress-plugin-google-analytics'
 import Xgplayer from './components/xgplayer.vue'
+import LockedPage from './components/LockedPage.vue'
 
 const AsyncConfetti = defineAsyncComponent(() => import('./components/confetti.vue'))
 // @ts-ignore
@@ -53,6 +54,8 @@ export default {
     }),
     // 注册：字数及阅读时间
     app.component('ArticleMetadata', ArticleMetadata)
+
+    app.component('LockedPage', LockedPage)
 
 
     if (inBrowser) {
