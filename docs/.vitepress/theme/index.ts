@@ -1,6 +1,6 @@
 // https://vitepress.dev/guide/custom-theme
 import DefaultTheme from 'vitepress/theme'
-import { h } from 'vue'
+import { h, defineAsyncComponent } from 'vue'
 // 不蒜子
 import { inBrowser, useData, useRoute } from 'vitepress'
 import busuanzi from 'busuanzi.pure.js'
@@ -25,7 +25,7 @@ import giscusTalk from 'vitepress-plugin-comment-with-giscus'
 import googleAnalytics from 'vitepress-plugin-google-analytics'
 import Xgplayer from './components/xgplayer.vue'
 
-
+const AsyncConfetti = defineAsyncComponent(() => import('./components/confetti.vue'))
 // @ts-ignore
 // import comment from "../components/gitalk.vue";
 
@@ -42,7 +42,7 @@ export default {
     app.component('HomeUnderline', HomeUnderline)
     app.component('DataPanel', DataPanel)
     // 注册：五彩纸屑
-    app.component('confetti' , confetti)
+    app.component('confetti' , AsyncConfetti)
     // 注册：网站支持视频文件的播放
     app.component('xgplayer', Xgplayer)
     // 注册：标题下面添加时间
