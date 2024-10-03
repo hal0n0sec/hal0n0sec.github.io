@@ -22,10 +22,10 @@ const error = ref('');
 const isLocked = ref(true);
 
 const unlockPage = () => {
-    // console.log('Attempting to unlock...');
-    // console.log('Input:', passwordInput.value);
-    // console.log('Salt:', salt.value);
-    // console.log('Correct Hash:', correctHash.value);
+    console.log('Attempting to unlock...');
+    console.log('Input:', passwordInput.value);
+    console.log('Salt:', salt.value);
+    console.log('Correct Hash:', correctHash.value);
 
     if (!salt.value || !correctHash.value) {
         console.error('Salt or correct hash is missing');
@@ -35,10 +35,10 @@ const unlockPage = () => {
 
     try {
         const hash = CryptoJS.HmacSHA256(passwordInput.value, salt.value).toString();
-        // console.log('Generated Hash:', hash);
+        console.log('Generated Hash:', hash);
 
         if (hash === correctHash.value) {
-            // console.log('Unlock successful!');
+            console.log('Unlock successful!');
             const unlockData = {
                 unlocked: true,
                 timestamp: new Date().getTime(),
@@ -47,11 +47,11 @@ const unlockPage = () => {
             isLocked.value = false;
             error.value = '';
         } else {
-            // console.log('Unlock failed!');
+            console.log('Unlock failed!');
             error.value = '密码错误，请重新输入';
         }
     } catch (e) {
-        // console.error('Error during hash generation:', e);
+        console.error('Error during hash generation:', e);
         error.value = '解锁过程出错，请重试';
     }
 };
@@ -60,8 +60,8 @@ onMounted(() => {
     console.log('Component mounted');
     correctHash.value = import.meta.env.VITE_PAGE_PASSWORD_HASH || '';
     salt.value = import.meta.env.VITE_PAGE_PASSWORD_SALT || '';
-    // console.log('Salt:', salt.value);
-    // console.log('Correct Hash:', correctHash.value);
+    console.log('Salt:', salt.value);
+    console.log('Correct Hash:', correctHash.value);
 
     const storedData = localStorage.getItem('pageUnlockData');
     if (storedData) {
