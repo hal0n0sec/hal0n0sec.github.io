@@ -88,7 +88,6 @@ export default defineConfig({
           {text: '「旅行」🏖️ Sanya Day2', link:'/blog/diary/「旅行」🏖️ Sanya Day2'},
           {text: '「旅行」💨 Sanya Day3&4', link:'/blog/diary/「旅行」💨 Sanya Day3&4'},
           {text: '「旅行」👋Sanya Day5', link:'/blog/diary/「旅行」👋Sanya Day5'},
-          
         ]
       },
       
