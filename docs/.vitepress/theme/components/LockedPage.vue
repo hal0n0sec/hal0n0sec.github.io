@@ -7,19 +7,30 @@
         <p v-if="error" class="text-red-500 mt-2">{{ error }}</p>
     </div>
     <div v-else>
+        <div  v-html="renderedContent"></div>
         <slot></slot>
     </div>
 </template>
 
 <script setup>
 import CryptoJS from 'crypto-js';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
+import MarkdownIt from 'markdown-it';
+import { Content } from 'vitepress';
 
 const correctHash = ref('');
 const salt = ref('');
 const passwordInput = ref('');
 const error = ref('');
 const isLocked = ref(true);
+const md = new MarkdownIt();
+
+const props = defineProps({
+    content: {
+        type: String,
+        default: ''
+    }
+});
 
 const unlockPage = () => {
 
@@ -46,6 +57,8 @@ const unlockPage = () => {
         error.value = '解锁过程出错，请重试';
     }
 };
+
+const renderedContent = computed(() => md.render(props.content));
 
 onMounted(() => {
     correctHash.value = import.meta.env.VITE_PAGE_PASSWORD_HASH || '';
