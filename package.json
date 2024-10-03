@@ -11,6 +11,7 @@
   "dependencies": {
     "@auth0/auth0-vue": "^2.3.3",
     "busuanzi.pure.js": "^1.0.3",
+    "crypto-js": "^4.2.0",
     "vitepress-plugin-comment-with-giscus": "^1.1.15",
     "vitepress-plugin-google-analytics": "^1.0.2",
     "vitepress-plugin-group-icons": "^1.1.0",
