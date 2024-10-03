@@ -13,17 +13,17 @@
 
 <script setup>
 import CryptoJS from 'crypto-js';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
-const correctHash = import.meta.env.VITE_PAGE_PASSWORD_HASH;
-const salt = import.meta.env.VITE_PAGE_PASSWORD_SALT;
+const correctHash = ref(import.meta.env.VITE_PAGE_PASSWORD_HASH);
+const salt = ref(import.meta.env.VITE_PAGE_PASSWORD_SALT);
 const passwordInput = ref('');
 const error = ref('');
 const isLocked = ref(true);
 
 const unlockPage = () => {
-    const hash = CryptoJS.HmacSHA256(passwordInput.value + salt).toString();
-    if (inputHash === correctHash) {
+    const hash = CryptoJS.HmacSHA256(passwordInput.value + salt.value).toString();
+    if (hash === correctHash.value) {
         const unlockData = {
             unlocked: true,
             timestamp: new Date().getTime(),
@@ -32,17 +32,19 @@ const unlockPage = () => {
         isLocked.value = false;
         error.value = '';
     } else {
-    error.value = '密码错误，请重新输入';
+        error.value = '密码错误，请重新输入';
     }   
 };
 
-const storedData = localStorage.getItem('pageUnlockData');
-if (storedData) {
-    const { unlocked, timestamp } = JSON.parse(storedData);
-    const currentTime = new Date().getTime();
-    const expirationTime = 24 * 60 * 60 * 1000;
-    if (unlocked && currentTime - timestamp < expirationTime) {
-        isLocked.value = false;
+onMounted(() => {
+    const storedData = localStorage.getItem('pageUnlockData');
+    if (storedData) {
+        const { unlocked, timestamp } = JSON.parse(storedData);
+        const currentTime = new Date().getTime();
+        const expirationTime = 24 * 60 * 60 * 1000;
+        if (unlocked && currentTime - timestamp < expirationTime) {
+            isLocked.value = false;
+        }
     }
-}
+});
 </script>
