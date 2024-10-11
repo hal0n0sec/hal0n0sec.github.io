@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "takuya's blog"
-  text: "👋 生命不息，折腾不止"
+  text: "👋 生命不息折腾不止"
   tagline: 光而不耀，静水深流
   image:
         src: /logo.png
