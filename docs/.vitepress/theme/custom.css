@@ -10,9 +10,6 @@
 /* 导入 LXGW WenKai 字体 */
 /* @import url("https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css"); */
 
-/* 导入monaco字体 */
-@import url('https://cdn.jsdelivr.net/npm/@fontsource/monaco@4.5.0/index.css');
-
 /* 导入 Hack Nerd 字体 */
 /* @import url("https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css"); */
 /* 主题 */
@@ -291,6 +288,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Monaco';
+  src: url(../../assets/Monaco.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 
 :root {
   --vp-font-family-base: 'LXGW WenKai','Monaco','Chinese Quotes', 'Inter var', 'Inter', ui-sans-serif,
@@ -318,6 +323,10 @@ h1, h2, h3, h4, h5, h6 {
 
 h1:lang(en),h2:lang(en),h3:lang(en),h4:lang(en),h5:lang(en),h6:lang(en) {
   font-family: 'Monaco', var(--vp-font-family-base);
+}
+
+pre, code, kbd, samp {
+  font-family: var(--vp-font-family-mono) !important;
 }
 /**
   * Shadows
