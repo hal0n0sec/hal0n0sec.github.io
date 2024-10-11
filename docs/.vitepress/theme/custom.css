@@ -308,11 +308,10 @@
 /* 全局应用字体并增加粗细 */
 body {
   font-family: var(--vp-font-family-base);
-  font-weight: 1000; /* 增加字体粗细，可以根据需要调整 */
 }
 
 /* 为英文文本设置 Monaco 字体 */
-body :lang(en) {
+:lang(en) {
   font-family: 'Monaco', var(--vp-font-family-base);
 }
 
