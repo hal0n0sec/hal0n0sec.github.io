@@ -1,4 +1,4 @@
-# About me
+# 关于我
 
 ## halo, welcome to takuya’s blog! 👀
 
